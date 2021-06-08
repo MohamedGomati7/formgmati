@@ -18,7 +18,22 @@
 		<h1>IT - University of Tripoli</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form action="#" method="post">
+
+			@if(Session::has('error'))
+				<div class="alert alert-success text-right">
+					 	{{Session::get('error')}}
+				</div>
+			@endif
+            @if(Session::has('success'))
+				<div class="alert alert-success text-right">
+						{{Session::get('success')}}
+				</div>
+			@endif
+
+				<form method="POST" action="{{route('submitstd')}}">
+
+				@csrf
+	
 					<input class="text" type="text" name="Username" placeholder="Full Name" required="">
                     <br>
                     <input class="text" type="text" name="stdid" placeholder="Student ID" required="">
